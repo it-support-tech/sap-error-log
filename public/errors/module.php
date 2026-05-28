@@ -1,5 +1,5 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/src/config/autoload.php';
+require_once __DIR__ . '/../../src/config/autoload.php';
 
 use App\Middleware\Auth;
 use App\Models\Module;
@@ -33,7 +33,7 @@ $totalPages = (int)ceil($total / $perPage);
 
 $pageTitle = $module['name_lo'] . ' — SAP B1 Error Log';
 
-include dirname(dirname(__DIR__)) . '/src/views/components/header.php';
+include __DIR__ . '/../../src/views/components/header.php';
 ?>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-900">
@@ -169,4 +169,4 @@ include dirname(dirname(__DIR__)) . '/src/views/components/header.php';
     <?php endif; ?>
 </main>
 
-<?php include dirname(dirname(__DIR__)) . '/src/views/components/footer.php'; ?>
+<?php include __DIR__ . '/../../src/views/components/footer.php'; ?>

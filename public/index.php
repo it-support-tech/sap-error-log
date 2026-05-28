@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__DIR__) . '/src/config/autoload.php';
+ 
+require_once __DIR__ . '/../src/config/autoload.php';
 
 use App\Middleware\Auth;
 use App\Models\Module;
