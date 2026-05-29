@@ -9,19 +9,23 @@ class Database
 
     private function __construct()
     {
-        $host = $_ENV['DB_HOST'] ?? getenv('DB_HOST') ?? '72.60.42.81';
-        $port = $_ENV['DB_PORT'] ?? getenv('DB_PORT') ?? '5432';
-        $name = $_ENV['DB_NAME'] ?? getenv('DB_NAME') ?? 'sap_errors';
-        $user = $_ENV['DB_USER'] ?? getenv('DB_USER') ?? 'ntp2026';
-        $pass = $_ENV['DB_PASS'] ?? getenv('DB_PASS') ?? 'admin@123#';
+        $host = '72.60.42.81';         
+        $port = '5432';            
+        $name = 'sap_errors';
+        $user = 'ntp2026';
+        $pass = 'admin@123#';
 
-        $dsn = "pgsql:host={$host};port={$port};dbname={$name}";
+        try {
+            $dsn = "mysql:host={$host};port={$port};dbname={$name};charset=utf8mb4";
 
-        $this->connection = new \PDO($dsn, $user, $pass, [
-            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-            \PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
+            $this->connection = new \PDO($dsn, $user, $pass, [
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                \PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+        } catch (\PDOException $e) {
+            die("Database Connection Failed: " . $e->getMessage());
+        }
     }
 
     public static function getInstance(): self
