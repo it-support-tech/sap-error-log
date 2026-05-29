@@ -20,7 +20,7 @@ class Auth
     public static function requireAuth(): void
     {
         if (!self::check()) {
-            header('Location: sap-error-log/public/login.php');
+            header('Location: login.php');
             exit;
         }
     }
