@@ -1,5 +1,5 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/src/config/autoload.php';
+require_once dirname(dirname(__DIR__)) . 'src/config/autoload.php';
 
 use App\Middleware\Auth;
 use App\Models\ErrorLog;
