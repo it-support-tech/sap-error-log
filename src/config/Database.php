@@ -16,7 +16,7 @@ class Database
         $pass = 'admin@123#';
 
         try {
-            $dsn = "mysql:host={$host};port={$port};dbname={$name};charset=utf8mb4";
+            $dsn = "pgsql:host={$host};port={$port};dbname={$name}";
 
             $this->connection = new \PDO($dsn, $user, $pass, [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
