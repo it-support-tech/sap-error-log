@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: sap_error_app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./public/uploads:/var/www/html/public/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: sap_errors
+      DB_USER: sapuser
+      DB_PASS: sappass123
+    networks:
+      - sap_network
+
+  db:
+    image: postgres:15-alpine
+    container_name: sap_error_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: sap_errors
+      POSTGRES_USER: sapuser
+      POSTGRES_PASSWORD: sappass123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sapuser -d sap_errors"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - sap_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sap_pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sap.local
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    depends_on:
+      - db
+    networks:
+      - sap_network
+
+volumes:
+  postgres_data:
+
+networks:
+  sap_network:
+    driver: bridge
