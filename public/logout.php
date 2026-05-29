@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/config/autoload.php';
 
-use App\Middleware\Auth;
+use App\middleware\Auth;
 
 Auth::logout();
 header('Location: /login.php');

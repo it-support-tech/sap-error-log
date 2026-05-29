@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../src/config/autoload.php';
 
-use App\Middleware\Auth;
-use App\Models\Employee;
+use App\middleware\Auth;
+use App\models\Employee;
 
 Auth::start();
 
