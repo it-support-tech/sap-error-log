@@ -7,7 +7,7 @@ use App\models\Employee;
 Auth::start();
 
 if (Auth::check()) {
-    header('Location: /index.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $emp = new Employee();
         $employee = $emp->findOrCreate($name);
         Auth::login($employee['id'], $employee['name']);
-        header('Location: /index.php');
+        header('Location: index.php');
         exit;
     }
 }
