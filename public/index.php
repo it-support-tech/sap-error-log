@@ -5,9 +5,9 @@ error_reporting(E_ALL);
  
 require_once __DIR__ . '/../src/config/autoload.php';
 
-use App\Middleware\Auth;
-use App\Models\Module;
-use App\Models\ErrorLog;
+use App\middleware\Auth;
+use App\models\Module;
+use App\models\ErrorLog;
 
 Auth::requireAuth();
 $employee = Auth::getEmployee();
