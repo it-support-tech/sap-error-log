@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_log'])) {
                 <label class="block text-sm font-bold text-gray-700 mb-2">Module</label>
                 <select name="module" required class="w-full border border-gray-300 p-2 rounded outline-none focus:ring-1 focus:ring-[#2eb85c]">
                     <option value="">Select Module...</option>
-                    <option value="Administration">CNNຈັດການລະບົບ (Administration)</option>
+                    <option value="Administration">ຈັດການລະບົບ (Administration)</option>
                     <option value="Financials">ການເງິນ ການບັນຊີ (Financials)</option>
                     <option value="Sales">ການຂາຍ (Sales - A/R)</option>
                     <option value="Purchasing">ຈັດຊື້ (Purchasing - A/P)</option>
