@@ -53,15 +53,15 @@ $related_articles = $related_stmt->fetchAll();
         <?php endif; ?>
 
         <div>
-            <h4 class="font-bold text-gray-900 text-base ">ສາເຫດ :</h4>
-            <div class="pl-4 text-gray-700   ">
+            <h4 class="font-bold text-gray-900 text-base">ສາເຫດ :</h4>
+            <div class="pl-4 text-gray-700">
                 <?= htmlspecialchars($log['cause']) ?>
             </div>
         </div>
 
         <div>
             <h4 class="font-bold text-gray-900 text-base mb-2">ອາການພົບບັນຫາ :</h4>
-            <div class="pl-4 text-gray-700 bg-gray-50 p-4 rounded-lg border border-gray-200 italic  ">
+            <div class="pl-4 text-gray-700 bg-gray-50 p-4 rounded-lg border border-gray-200 italic">
                 <?= htmlspecialchars($log['symptoms']) ?>
             </div>
         </div>
