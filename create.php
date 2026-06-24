@@ -1,5 +1,4 @@
 <?php
-// create.php
 require_once 'config/database.php';
 require_once 'includes/header.php';
 
@@ -9,9 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_log'])) {
     
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
         $uploadDir = 'uploads/';
-        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
         
-        $fileName = time() . '_' . basename($_FILES['image']['name']);
+        $originalName = basename($_FILES['image']['name']);
+        $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+        $cleanName = preg_replace("/[^a-zA-Z0-9.\-_]/", "_", pathinfo($originalName, PATHINFO_FILENAME));
+        $fileName = time() . '_' . $cleanName . '.' . $fileExtension;
+        
         $imagePath = $uploadDir . $fileName;
         move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
     }
@@ -47,12 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_log'])) {
                 <label class="block text-sm font-bold text-gray-700 mb-2">Module</label>
                 <select name="module" required class="w-full border border-gray-300 p-2 rounded outline-none focus:ring-1 focus:ring-[#2eb85c]">
                     <option value="">Select Module...</option>
-                    <option value="Administration">ການຈັດການລະບົບ (Administration)</option>
+                    <option value="Administration">CNNຈັດການລະບົບ (Administration)</option>
                     <option value="Financials">ການເງິນ ການບັນຊີ (Financials)</option>
                     <option value="Sales">ການຂາຍ (Sales - A/R)</option>
                     <option value="Purchasing">ຈັດຊື້ (Purchasing - A/P)</option>
                     <option value="Business Partners">ຄູ່ຮ່ວມທຸລະກິດ (Business Partners)</option>
-                    <option value="Banking">ການທະນາຄານ (Banking)</option>
+                    <option value="Banking">Janທະນາຄານ (Banking)</option>
                     <option value="Inventory">ຈັດການສາງ (Inventory)</option>
                     <option value="Fixed Asset">ຊັບສິນ (Fixed Asset)</option>
                 </select>
