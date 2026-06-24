@@ -1,8 +1,15 @@
 <?php
-$host = 'db';  
+// local
+// $host = 'db';  
+// $db   = 'sap_logs';
+// $user = 'postgres';
+// $pass = 'yourpassword';
+// $port = '5432';
+// PROD 
+$host = '72.60.42.81';  
 $db   = 'sap_logs';
-$user = 'postgres';
-$pass = 'yourpassword';
+$user = 'ntp2026';
+$pass = 'admin@123#';
 $port = '5432';
 
 try {
