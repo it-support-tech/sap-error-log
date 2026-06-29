@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_log'])) {
                     <option value="Sales">ການຂາຍ (Sales - A/R)</option>
                     <option value="Purchasing">ຈັດຊື້ (Purchasing - A/P)</option>
                     <option value="Business Partners">ຄູ່ຮ່ວມທຸລະກິດ (Business Partners)</option>
-                    <option value="Banking">Janທະນາຄານ (Banking)</option>
+                    <option value="Banking">ທະນາຄານ (Banking)</option>
                     <option value="Inventory">ຈັດການສາງ (Inventory)</option>
                     <option value="Fixed Asset">ຊັບສິນ (Fixed Asset)</option>
                 </select>
